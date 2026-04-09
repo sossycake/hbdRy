@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎾</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #fdf6ec;
+      --gold: #c9923a;
+      --deep: #1a1209;
+      --blush: #e8c4a0;
+      --tennis: #b8e04a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--deep);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 40%, #fff8ee 0%, #f0dfc0 60%, #d4b483 100%);
+      padding: 2rem 1rem 3rem;
+    }
+
+    .ball {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--tennis);
+      opacity: 0.3;
+      animation: floatBall linear infinite;
+      pointer-events: none;
+    }
+    @keyframes floatBall {
+      0%   { transform: translateY(110vh) rotate(0deg); }
+      100% { transform: translateY(-10vh) rotate(720deg); }
+    }
+
+    .hb-stage { perspective: 900px; cursor: default; }
+
+    .hb-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 9vw, 6.5rem);
+      color: var(--gold);
+      text-shadow: 3px 3px 0 #9a6820, 6px 6px 0 #7a5010, 10px 10px 16px rgba(0,0,0,0.15);
+      transform-style: preserve-3d;
+      animation: float3d 5s ease-in-out infinite;
+      transition: transform 0.1s ease;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+    @keyframes float3d {
+      0%, 100% { transform: rotateX(5deg) rotateY(-4deg) translateY(0); }
+      50%       { transform: rotateX(-5deg) rotateY(4deg) translateY(-12px); }
+    }
+
+    .hb-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.5vw, 1.4rem);
+      color: #9a6820;
+      letter-spacing: 3px;
+      text-align: center;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.8s forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-hint {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.45;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .scroll-hint span { animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── CARLOS ── */
+    #carlos {
+      padding: 5rem 1.5rem 4rem;
+      background: var(--deep);
+      position: relative;
+      overflow: hidden;
+    }
+    #carlos::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(185,224,74,0.035) 40px, rgba(185,224,74,0.035) 41px);
+      pointer-events: none;
+    }
+
+    .carlos-label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--tennis);
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.6rem;
+      opacity: 0.7;
+    }
+    .carlos-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      color: #fff;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+    .carlos-sub {
+      color: var(--blush);
+      text-align: center;
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      opacity: 0.65;
+    }
+
+    .carlos-triangle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .carlos-row-top {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .carlos-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex: 1;
+      max-width: 340px;
+    }
+    .carlos-card:hover {
+      transform: scale(1.03) rotate(-1deg);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+    }
+    .carlos-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+    .carlos-card .badge {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: var(--tennis);
+      color: var(--deep);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .carlos-video-wrap {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .carlos-video-wrap video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+    }
+    .carlos-video-wrap .badge {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(255,255,255,0.9);
+      color: var(--deep);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* ── MEMORIES ── */
+    #memories {
+      padding: 6rem 1rem 8rem;
+      background: var(--cream);
+    }
+
+    .mem-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .mem-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--gold);
+    }
+    .mem-header p {
+      color: #9a7850;
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+      letter-spacing: 1px;
+    }
+
+    /* Wrapper holds both the SVG and the photos */
+    .photo-strip-wrap {
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* SVG squiggle sits behind everything */
+    .squiggle-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
+    .photo-strip {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 2rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      position: relative;
+    }
+    .photo-item.visible { opacity: 1; transform: translateY(0); }
+
+    .photo-item:nth-child(odd)  { justify-content: flex-start; }
+    .photo-item:nth-child(even) { justify-content: flex-end; }
+
+    /* polaroid */
+    .photo-frame {
+      width: clamp(150px, 38vw, 220px);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 6px 10px 28px rgba(0,0,0,0.14);
+      background: #fff;
+      padding: 6px 6px 22px 6px;
+      position: relative;
+    }
+    .photo-item:nth-child(1) .photo-frame { transform: rotate(-3deg); }
+    .photo-item:nth-child(2) .photo-frame { transform: rotate(2deg); }
+    .photo-item:nth-child(3) .photo-frame { transform: rotate(-1.5deg); }
+    .photo-item:nth-child(4) .photo-frame { transform: rotate(3deg); }
+    .photo-item:nth-child(5) .photo-frame { transform: rotate(-2deg); }
+    .photo-item:nth-child(6) .photo-frame { transform: rotate(1.5deg); }
+    .photo-item:nth-child(7) .photo-frame { transform: rotate(-2.5deg); }
+
+    .photo-frame img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* emoji floaters beside each photo */
+    .photo-emoji {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 2;
+      line-height: 1;
+    }
+    .photo-item:nth-child(odd)  .photo-emoji { right: clamp(4px, 8vw, 70px); animation: wiggle1 2.8s ease-in-out infinite; }
+    .photo-item:nth-child(even) .photo-emoji { left:  clamp(4px, 8vw, 70px); animation: wiggle2 3.2s ease-in-out infinite; }
+
+    @keyframes wiggle1 {
+      0%,100% { transform: translateY(-50%) rotate(-10deg); }
+      50%      { transform: translateY(-60%) rotate(10deg); }
+    }
+    @keyframes wiggle2 {
+      0%,100% { transform: translateY(-50%) rotate(10deg); }
+      50%      { transform: translateY(-40%) rotate(-10deg); }
+    }
+
+    /* ── LOVE NOTE ── */
+    #love-note {
+      background: var(--deep);
+      padding: 6rem 2rem 7rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #love-note::after {
+      content: '🎾';
+      position: absolute;
+      font-size: 180px;
+      opacity: 0.04;
+      bottom: -10px; right: -10px;
+      pointer-events: none;
+    }
+
+    .love-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 4vw, 2.2rem);
+      color: var(--cream);
+      line-height: 1.8;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .love-text .heart {
+      color: #e87070;
+      display: inline-block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%,100%{ transform: scale(1); }
+      14%    { transform: scale(1.3); }
+      28%    { transform: scale(1); }
+      42%    { transform: scale(1.15); }
+      70%    { transform: scale(1); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 500px) {
+      .carlos-row-top   { gap: 1rem; }
+      .carlos-card      { max-width: 44vw; }
+      .carlos-video-wrap{ max-width: 80vw; }
+      .photo-frame      { width: clamp(130px, 42vw, 185px); }
+      .photo-emoji      { font-size: 1.3rem; }
+      .photo-item:nth-child(odd)  .photo-emoji { right: 2px; }
+      .photo-item:nth-child(even) .photo-emoji { left:  2px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="ball" style="left:8%;width:16px;height:16px;animation-duration:9s;animation-delay:0s;"></div>
+  <div class="ball" style="left:25%;width:28px;height:28px;animation-duration:13s;animation-delay:2s;"></div>
+  <div class="ball" style="left:55%;width:22px;height:22px;animation-duration:10s;animation-delay:4s;"></div>
+  <div class="ball" style="left:75%;width:18px;height:18px;animation-duration:15s;animation-delay:1s;"></div>
+  <div class="ball" style="left:90%;width:12px;height:12px;animation-duration:11s;animation-delay:3s;"></div>
+
+  <div class="hb-stage">
+    <div class="hb-text" id="hbText">Happy<br/>Birthday 🎂</div>
+  </div>
+  <div class="hb-sub">to the one and only ✨</div>
+  <div class="scroll-hint"><span>↓</span>scroll</div>
+</section>
+
+<!-- ── CARLOS ── -->
+<section id="carlos">
+  <p class="carlos-label">🎾 for the tennis fan</p>
+  <h2 class="carlos-title">That Carlos Alcaraz energy though</h2>
+  <p class="carlos-sub">the pose, the vibe — you were built for this</p>
+
+  <div class="carlos-triangle">
+    <div class="carlos-row-top">
+      <div class="carlos-card">
+        <img src="images/IMG-20251015-WA0013.jpg" alt="pose 1" />
+        <span class="badge">The Win Pose ✊</span>
+      </div>
+      <div class="carlos-card">
+        <img src="images/IMG-20260111-WA0025.jpg" alt="pose 2" />
+        <span class="badge">Pure Carlos Energy</span>
+      </div>
+    </div>
+    <div class="carlos-video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="images/VID_20260409_165639.mp4" type="video/mp4" />
+      </video>
+      <span class="badge">🎾 the real thing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MEMORIES ── -->
+<section id="memories">
+  <div class="mem-header">
+    <h2>Us, always 🤍</h2>
+    <p>a little film roll of everything</p>
+  </div>
+
+  <div class="photo-strip-wrap">
+    <!-- squiggly SVG line drawn by JS after layout -->
+    <svg class="squiggle-svg" id="squiggleSvg" aria-hidden="true"></svg>
+
+    <div class="photo-strip" id="photoStrip">
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/IMG_2614.jpg" alt="beach night" loading="lazy" /></div>
+        <span class="photo-emoji">🌊</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/PXL_20250814_083744219_MP.jpg" alt="cafe moment" loading="lazy" /></div>
+        <span class="photo-emoji">☕</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/IMG_20260409_162319.jpg" alt="eiffel tower" loading="lazy" /></div>
+        <span class="photo-emoji">🥐</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/IMG_20260409_162251.jpg" alt="prom" loading="lazy" /></div>
+        <span class="photo-emoji">💐</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/IMG_20260409_162356.jpg" alt="cat selfie" loading="lazy" /></div>
+        <span class="photo-emoji">🐾</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/IMG_20260409_162419.jpg" alt="dancing" loading="lazy" /></div>
+        <span class="photo-emoji">🕺</span>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame"><img src="images/Screenshot_2026-04-08-15-04-23-73_965bbf4d18d205f782c6b8409c5773a4.jpg" alt="scream shirt" loading="lazy" /></div>
+        <span class="photo-emoji">😭</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LOVE NOTE ── -->
+<section id="love-note">
+  <p class="love-text">
+    For the fun times, for the memories,<br/>
+    for the goofiness, for everything<br/>
+    <span class="heart">❤️</span><br/>
+    <em>I love you.</em>
+  </p>
+</section>
+
+<script>
+  /* ── 3D tilt on hero ── */
+  const hbText = document.getElementById('hbText');
+  document.addEventListener('mousemove', e => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    hbText.style.transform = `rotateX(${((e.clientY-cy)/cy)*10}deg) rotateY(${((e.clientX-cx)/cx)*-10}deg)`;
+  });
+  document.addEventListener('mouseleave', () => { hbText.style.transform = ''; });
+  document.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    hbText.style.transform = `rotateX(${((t.clientY-cy)/cy)*8}deg) rotateY(${((t.clientX-cx)/cx)*-8}deg)`;
+  }, { passive: true });
+
+  /* ── Scroll reveal ── */
+  const items = document.querySelectorAll('.photo-item');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(i => revealObs.observe(i));
+
+  /* ── Draw squiggly path through photo centres ── */
+  function drawSquiggle() {
+    const svg = document.getElementById('squiggleSvg');
+    const wrap = svg.parentElement;
+    const wrapRect = wrap.getBoundingClientRect();
+
+    // collect centre point of each photo frame
+    const frames = wrap.querySelectorAll('.photo-frame');
+    const pts = [];
+    frames.forEach(f => {
+      const r = f.getBoundingClientRect();
+      pts.push({
+        x: r.left - wrapRect.left + r.width / 2,
+        y: r.top  - wrapRect.top  + r.height / 2
+      });
+    });
+
+    if (pts.length < 2) return;
+
+    // build a smooth curved path through points with loopy control handles
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i], b = pts[i + 1];
+      const mx = (a.x + b.x) / 2;
+      const my = (a.y + b.y) / 2;
+      // alternate the loop direction so it zigzags
+      const flip = i % 2 === 0 ? 1 : -1;
+      const swing = 70 * flip;
+      // cubic bezier with two control points that swing out
+      const cp1x = a.x + swing;
+      const cp1y = a.y + (b.y - a.y) * 0.25;
+      const cp2x = b.x + swing;
+      const cp2y = a.y + (b.y - a.y) * 0.75;
+      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${b.x} ${b.y}`;
+    }
+
+    svg.innerHTML = `
+      <path
+        d="${d}"
+        fill="none"
+        stroke="#d4b483"
+        stroke-width="2.5"
+        stroke-dasharray="8 7"
+        stroke-linecap="round"
+        opacity="0.75"
+      />
+      ${pts.map(p => `<circle cx="${p.x}" cy="${p.y}" r="5" fill="#c9923a" opacity="0.6"/>`).join('')}
+    `;
+  }
+
+  // draw after images load (or after a tick if already loaded)
+  window.addEventListener('load', drawSquiggle);
+  window.addEventListener('resize', drawSquiggle);
+  // fallback in case load already fired
+  if (document.readyState === 'complete') drawSquiggle();
+</script>
+</body>
+</html>
