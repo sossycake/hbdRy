@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday 🎾</title>
+  <title>HBD HBD</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
+ <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -14,6 +15,7 @@
       --deep: #1a1209;
       --blush: #e8c4a0;
       --tennis: #b8e04a;
+      --bluee: rgba(255, 0, 76, 0.263);
     }
 
     html { scroll-behavior: smooth; }
@@ -26,7 +28,7 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 70vh;
+      min-height: 38vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -34,13 +36,13 @@
       position: relative;
       overflow: hidden;
       background: radial-gradient(ellipse at 60% 40%, #fff8ee 0%, #f0dfc0 60%, #d4b483 100%);
-      padding: 2rem 1rem 3rem;
+      padding: 1.5rem 1rem 2rem;
     }
 
     .ball {
       position: absolute;
       border-radius: 50%;
-      background: var(--tennis);
+      background: var(--bluee);
       opacity: 0.3;
       animation: floatBall linear infinite;
       pointer-events: none;
@@ -55,50 +57,36 @@
     .hb-text {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
-      font-size: clamp(2.4rem, 9vw, 6.5rem);
+      font-size: clamp(2.2rem, 8vw, 3.8rem);
       color: var(--gold);
-      text-shadow: 3px 3px 0 #9a6820, 6px 6px 0 #7a5010, 10px 10px 16px rgba(0,0,0,0.15);
+      text-shadow: 2px 2px 0 #9a6820, 4px 4px 0 #7a5010, 8px 8px 12px rgba(0,0,0,0.12);
       transform-style: preserve-3d;
       animation: float3d 5s ease-in-out infinite;
       transition: transform 0.1s ease;
-      line-height: 1.05;
-      letter-spacing: -1px;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
       text-align: center;
     }
     @keyframes float3d {
-      0%, 100% { transform: rotateX(5deg) rotateY(-4deg) translateY(0); }
-      50%       { transform: rotateX(-5deg) rotateY(4deg) translateY(-12px); }
+      0%, 100% { transform: rotateX(4deg) rotateY(-3deg) translateY(0); }
+      50%       { transform: rotateX(-4deg) rotateY(3deg) translateY(-8px); }
     }
 
     .hb-sub {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(0.95rem, 2.5vw, 1.4rem);
+      font-size: clamp(0.95rem, 3.5vw, 1.15rem);
       color: #9a6820;
       letter-spacing: 3px;
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 0.6rem;
       opacity: 0;
       animation: fadeUp 1s 0.8s forwards;
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    .scroll-hint {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      opacity: 0.45;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .scroll-hint span { animation: bounce 2s ease-in-out infinite; }
-    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
     /* ── CARLOS ── */
     #carlos {
@@ -134,13 +122,6 @@
       text-align: center;
       margin-bottom: 0.4rem;
       line-height: 1.2;
-    }
-    .carlos-sub {
-      color: var(--blush);
-      text-align: center;
-      font-size: 0.95rem;
-      margin-bottom: 3rem;
-      opacity: 0.65;
     }
 
     .carlos-triangle {
@@ -241,14 +222,12 @@
       letter-spacing: 1px;
     }
 
-    /* Wrapper holds both the SVG and the photos */
     .photo-strip-wrap {
       max-width: 580px;
       margin: 0 auto;
       position: relative;
     }
 
-    /* SVG squiggle sits behind everything */
     .squiggle-svg {
       position: absolute;
       top: 0; left: 0;
@@ -281,7 +260,6 @@
     .photo-item:nth-child(odd)  { justify-content: flex-start; }
     .photo-item:nth-child(even) { justify-content: flex-end; }
 
-    /* polaroid */
     .photo-frame {
       width: clamp(150px, 38vw, 220px);
       border-radius: 4px;
@@ -306,7 +284,6 @@
       display: block;
     }
 
-    /* emoji floaters beside each photo */
     .photo-emoji {
       font-size: clamp(1.5rem, 5vw, 2.2rem);
       position: absolute;
@@ -328,15 +305,15 @@
       50%      { transform: translateY(-40%) rotate(-10deg); }
     }
 
-    /* ── LOVE NOTE ── */
-    #love-note {
+    /* ── END NOTE ── */
+    #end-note {
       background: var(--deep);
       padding: 6rem 2rem 7rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    #love-note::after {
+    #end-note::after {
       content: '🎾';
       position: absolute;
       font-size: 180px;
@@ -345,7 +322,7 @@
       pointer-events: none;
     }
 
-    .love-text {
+    .end-text {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.3rem, 4vw, 2.2rem);
       color: var(--cream);
@@ -353,7 +330,7 @@
       max-width: 620px;
       margin: 0 auto;
     }
-    .love-text .heart {
+    .end-text .heart {
       color: #e87070;
       display: inline-block;
       animation: heartbeat 1.4s ease-in-out infinite;
@@ -364,6 +341,104 @@
       28%    { transform: scale(1); }
       42%    { transform: scale(1.15); }
       70%    { transform: scale(1); }
+    }
+
+    /* ── LETTER BUTTON ── */
+    .letter-btn-wrap {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .letter-btn {
+      background: none;
+      border: 2px solid rgba(253,246,236,0.3);
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: background 0.25s, border-color 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .letter-btn:hover {
+      background: rgba(253,246,236,0.08);
+      border-color: rgba(253,246,236,0.6);
+    }
+
+    /* ── LETTER OVERLAY ── */
+    .letter-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,6,2,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      padding: 1.5rem;
+    }
+    .letter-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .letter-modal {
+      position: relative;
+      width: min(440px, 92vw);
+      background: #fdf8f0;
+      border-radius: 3px;
+      padding: 3rem 2.4rem 2.4rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.06);
+      background-image: repeating-linear-gradient(
+        transparent, transparent 31px, #e8d9c0 31px, #e8d9c0 32px
+      );
+      background-size: 100% 32px;
+      background-position: 0 44px;
+      transform: scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .letter-overlay.open .letter-modal {
+      transform: scale(1);
+    }
+
+    .letter-modal::before {
+      content: '';
+      position: absolute;
+      top: 44px; left: 52px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(220, 100, 80, 0.25);
+    }
+
+    .letter-modal p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(0.9rem, 2.5vw, 1.08rem);
+      color: #2e1f08;
+      line-height: 2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter-close {
+      position: absolute;
+      top: 0.9rem; right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #b09070;
+      padding: 4px;
+      line-height: 1;
     }
 
     /* ── MOBILE ── */
@@ -389,27 +464,26 @@
   <div class="ball" style="left:90%;width:12px;height:12px;animation-duration:11s;animation-delay:3s;"></div>
 
   <div class="hb-stage">
-    <div class="hb-text" id="hbText">Happy<br/>Birthday 🎂</div>
+    <div class="hb-text" id="hbText">Happy Birthday 🎂</div>
   </div>
-  <div class="hb-sub">to the one and only ✨</div>
-  <div class="scroll-hint"><span>↓</span>scroll</div>
+  <div class="hb-sub">Ryan ✨</div>
 </section>
 
 <!-- ── CARLOS ── -->
 <section id="carlos">
   <p class="carlos-label">🎾 for the tennis fan</p>
   <h2 class="carlos-title">That Carlos Alcaraz energy though</h2>
-  <p class="carlos-sub">the pose, the vibe — you were built for this</p>
+  <br>
 
   <div class="carlos-triangle">
     <div class="carlos-row-top">
       <div class="carlos-card">
         <img src="images/IMG-20251015-WA0013.jpg" alt="pose 1" />
-        <span class="badge">The Win Pose ✊</span>
+        <span class="badge">What did they say? 😎</span>
       </div>
       <div class="carlos-card">
         <img src="images/IMG-20260111-WA0025.jpg" alt="pose 2" />
-        <span class="badge">Pure Carlos Energy</span>
+        <span class="badge">God owed me a favour I guess 🤷‍♂️</span>
       </div>
     </div>
     <div class="carlos-video-wrap">
@@ -424,67 +498,88 @@
 <!-- ── MEMORIES ── -->
 <section id="memories">
   <div class="mem-header">
-    <h2>Us, always 🤍</h2>
-    <p>a little film roll of everything</p>
+    <h2>🤍</h2>
+    <p>a little film roll of the goofeys</p>
   </div>
 
   <div class="photo-strip-wrap">
-    <!-- squiggly SVG line drawn by JS after layout -->
     <svg class="squiggle-svg" id="squiggleSvg" aria-hidden="true"></svg>
 
     <div class="photo-strip" id="photoStrip">
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/IMG_2614.jpg" alt="beach night" loading="lazy" /></div>
-        <span class="photo-emoji">🌊</span>
+        <span class="photo-emoji">🌊💗</span>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/PXL_20250814_083744219_MP.jpg" alt="cafe moment" loading="lazy" /></div>
-        <span class="photo-emoji">☕</span>
+        <span class="photo-emoji">🤭🥰</span>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/IMG_20260409_162319.jpg" alt="eiffel tower" loading="lazy" /></div>
-        <span class="photo-emoji">🥐</span>
+        <span class="photo-emoji">🥐🗼</span>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/IMG_20260409_162251.jpg" alt="prom" loading="lazy" /></div>
-        <span class="photo-emoji">💐</span>
+        <span class="photo-emoji">🌹😋</span>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/IMG_20260409_162356.jpg" alt="cat selfie" loading="lazy" /></div>
-        <span class="photo-emoji">🐾</span>
+        <span class="photo-emoji">🐾😼</span>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame"><img src="images/IMG_20260409_162419.jpg" alt="dancing" loading="lazy" /></div>
-        <span class="photo-emoji">🕺</span>
+        <span class="photo-emoji">🕺💃</span>
       </div>
 
       <div class="photo-item">
-        <div class="photo-frame"><img src="images/Screenshot_2026-04-08-15-04-23-73_965bbf4d18d205f782c6b8409c5773a4.jpg" alt="scream shirt" loading="lazy" /></div>
-        <span class="photo-emoji">😭</span>
+        <div class="photo-frame"><img src="images/IMG-20260214-WA0011.jpg" alt="last photo" loading="lazy" /></div>
+        <span class="photo-emoji">😍💭</span>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ── LOVE NOTE ── -->
-<section id="love-note">
-  <p class="love-text">
+<!-- ── END NOTE ── -->
+<section id="end-note">
+  <p class="end-text">
     For the fun times, for the memories,<br/>
     for the goofiness, for everything<br/>
     <span class="heart">❤️</span><br/>
-    <em>I love you.</em>
+    <em>I love you</em>
   </p>
+
+  <div class="letter-btn-wrap">
+    <button class="letter-btn" id="openLetter">
+      ✉️ a little note for you
+    </button>
+  </div>
 </section>
 
+<!-- ── LETTER MODAL ── -->
+<div class="letter-overlay" id="letterOverlay">
+  <div class="letter-modal">
+    <button class="letter-close" id="closeLetter">✕</button>
+    <p>
+      I hope this letter finds you glowing,<br/>
+      from your birthday candles, and from within!<br/>
+      You make dreams feel like reality,<br/>
+      and reality feel like a dream. <br/>
+      I can't wait to run around cities with you,<br/>
+      and explore new things<br/>
+      like we always have &lt;3
+    </p>
+  </div>
+</div>
+
 <script>
-  /* ── 3D tilt on hero ── */
+  /* ── 3D tilt ── */
   const hbText = document.getElementById('hbText');
   document.addEventListener('mousemove', e => {
     const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
@@ -504,61 +599,39 @@
   }, { threshold: 0.15 });
   items.forEach(i => revealObs.observe(i));
 
-  /* ── Draw squiggly path through photo centres ── */
+  /* ── Squiggle ── */
   function drawSquiggle() {
     const svg = document.getElementById('squiggleSvg');
     const wrap = svg.parentElement;
     const wrapRect = wrap.getBoundingClientRect();
-
-    // collect centre point of each photo frame
     const frames = wrap.querySelectorAll('.photo-frame');
     const pts = [];
     frames.forEach(f => {
       const r = f.getBoundingClientRect();
-      pts.push({
-        x: r.left - wrapRect.left + r.width / 2,
-        y: r.top  - wrapRect.top  + r.height / 2
-      });
+      pts.push({ x: r.left - wrapRect.left + r.width/2, y: r.top - wrapRect.top + r.height/2 });
     });
-
     if (pts.length < 2) return;
-
-    // build a smooth curved path through points with loopy control handles
     let d = `M ${pts[0].x} ${pts[0].y}`;
     for (let i = 0; i < pts.length - 1; i++) {
-      const a = pts[i], b = pts[i + 1];
-      const mx = (a.x + b.x) / 2;
-      const my = (a.y + b.y) / 2;
-      // alternate the loop direction so it zigzags
+      const a = pts[i], b = pts[i+1];
       const flip = i % 2 === 0 ? 1 : -1;
       const swing = 70 * flip;
-      // cubic bezier with two control points that swing out
-      const cp1x = a.x + swing;
-      const cp1y = a.y + (b.y - a.y) * 0.25;
-      const cp2x = b.x + swing;
-      const cp2y = a.y + (b.y - a.y) * 0.75;
-      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${b.x} ${b.y}`;
+      d += ` C ${a.x+swing} ${a.y+(b.y-a.y)*0.25}, ${b.x+swing} ${a.y+(b.y-a.y)*0.75}, ${b.x} ${b.y}`;
     }
-
     svg.innerHTML = `
-      <path
-        d="${d}"
-        fill="none"
-        stroke="#d4b483"
-        stroke-width="2.5"
-        stroke-dasharray="8 7"
-        stroke-linecap="round"
-        opacity="0.75"
-      />
+      <path d="${d}" fill="none" stroke="#d4b483" stroke-width="2.5" stroke-dasharray="8 7" stroke-linecap="round" opacity="0.75"/>
       ${pts.map(p => `<circle cx="${p.x}" cy="${p.y}" r="5" fill="#c9923a" opacity="0.6"/>`).join('')}
     `;
   }
-
-  // draw after images load (or after a tick if already loaded)
   window.addEventListener('load', drawSquiggle);
   window.addEventListener('resize', drawSquiggle);
-  // fallback in case load already fired
   if (document.readyState === 'complete') drawSquiggle();
+
+  /* ── Letter modal ── */
+  const overlay = document.getElementById('letterOverlay');
+  document.getElementById('openLetter').addEventListener('click', () => overlay.classList.add('open'));
+  document.getElementById('closeLetter').addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
 </script>
 </body>
 </html>
